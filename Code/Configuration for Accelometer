@@ -1,0 +1,20 @@
+Configure your Pi
+The ADXL345 supports both I2C and SPI connections, I used I2C, which requires some configuration on the Pi:
+
+Add the I2C modules to the Pi's configuration: 
+sudo nano /etc/modules add the following lines:
+i2c-bcm2708
+i2c-dev Remove I2C from the blacklist:
+sudo nano /etc/modprobe.d/raspi-blacklist.conf comment out:
+blacklist i2c-bcm2708 so its:
+#blacklist i2c-bcm2708 Reboot to make the changes:
+sudo shutdown -r nowInstall Software
+You will need to install some software:
+sudo apt-get install python-smbus i2c-tools git-coreTest ADXL345
+You can check that your ADXL345 is found on the I2C bus, by running:
+sudo i2cdetect -y 1 You should see a device at address 53
+
+
+
+
+
